@@ -1,0 +1,1 @@
+Error message: [{{.PID}}] some error err={{.Err.Error}}

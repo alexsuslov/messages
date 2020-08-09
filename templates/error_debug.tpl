@@ -1,0 +1,1 @@
+Debug message: [{{.Source.PID}}] some error err={{.Source.Err.Error}} filename={{.Filename}}:{{.Line}}
