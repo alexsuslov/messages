@@ -16,6 +16,11 @@ type Template struct {
 	Logger   bool
 	Debugger bool
 }
+
+func (Template *Template) GetT() *template.Template{
+	return Template.T
+}
+
 func (Template *Template) SetLogger(val bool) *Template{
 	Template.Logger = val
 	return Template
@@ -58,7 +63,7 @@ func (Template *Template) ReLoad(path string, ext string) (err error) {
 func (Template Template) Execute(name string, source interface{}) (result string) {
 	var res []byte
 	buf := bytes.NewBuffer(res)
-	err := Template.T.ExecuteTemplate(buf, name, source)
+	err := Template.GetT().ExecuteTemplate(buf, name, source)
 	if err != nil {
 		return err.Error()
 	}
