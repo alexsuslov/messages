@@ -13,6 +13,7 @@ import (
 type Template struct {
 	Name     string
 	T        *template.Template
+	FuncMap  *template.FuncMap
 	Logger   bool
 	Debugger bool
 }
@@ -34,6 +35,11 @@ func (Template *Template) SetDebugger(val bool) *Template{
 // New messages template
 func New(Name string) *Template {
 	return &Template{Name: Name}
+}
+
+func ( Template *Template)SetFuncMap(funcMap template.FuncMap)*Template{
+	Template.FuncMap = &funcMap
+	return Template
 }
 
 // ReLoad templates form folder
