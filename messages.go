@@ -34,7 +34,10 @@ func (Template *Template) SetDebugger(val bool) *Template{
 
 // New messages template
 func New(Name string) *Template {
-	return &Template{Name: Name}
+  	return &Template{
+		Name: Name,
+		T: template.New(Name),
+	}
 }
 
 func ( Template *Template)SetFuncMap(funcMap template.FuncMap)*Template{
