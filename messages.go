@@ -62,9 +62,15 @@ func (Template *Template) ReLoad(path string, ext string) (err error) {
 			}
 		}
 	}
-	Template.T, err = template.
-		New(Template.Name).
-		ParseFiles(filesPath...)
+	
+	if Template.FuncMap != nil{
+		Template.T = Template.T.Funcs(*Template.FuncMap)
+	}
+	
+	if Template.FuncMap != nil{
+		Template.T.Funcs(*Template.FuncMap)
+	}
+	_, err = Template.T.ParseFiles(filesPath...)
 	return
 }
 
